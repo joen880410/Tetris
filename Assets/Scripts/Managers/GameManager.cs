@@ -30,6 +30,7 @@ public class GameManager : Singleton<GameManager> {
         if (currentShape == null) {
             SpawnShape();
         }
+        InputControl();
     }
 
 
@@ -119,5 +120,12 @@ public class GameManager : Singleton<GameManager> {
             nextShape.SetSpeed(mInitSpeed);
         }
         mCurrentSpeed = mInitSpeed;
+    }
+    private void InputControl()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            EventManager.Instance.Fire(UIEvent.GAME_PAUSE);
+        }
     }
 }
